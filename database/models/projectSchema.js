@@ -16,20 +16,12 @@ const projectSchema = new mongoose.Schema({
         require: true,
     },
     membersId: {
-        type: String,
-        require: true,
+        type: Array,
+        default: []
     },
     deadline: {
         type: String,
         require: true,
-    },
-    ownedProjects: {
-        type: Array,
-        default: [],
-    },
-    memberOfProjects: {
-        type: Array,
-        default: [],
     },
     status: {
         type: String,

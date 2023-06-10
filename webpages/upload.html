@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+</head>
+
+<body>
+    <input type="file" id="fileInput">
+    <input type="text" id="nameInput" placeholder="Enter name">
+    <button id="uploadButton">Upload</button>
+    <script>
+        document.getElementById('uploadButton').addEventListener('click', uploadFile);
+
+        function uploadFile() {
+            var fileInput = document.getElementById('fileInput');
+            var file = fileInput.files[0];
+            var nameInput = document.getElementById('nameInput');
+            var name = nameInput.value;
+
+            if (file && name) {
+                var formData = new FormData();
+                formData.append('file', file);
+                formData.append('name', name);
+
+                fetch('http://localhost:5000/upload', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Handle the response from the backend
+                        console.log(data);
+                    })
+                    .catch(error => {
+                        // Handle any errors that occur during the request
+                        console.error('Error:', error);
+                    });
+            }
+        }
+
+    </script>
+</body>
+
+</html>
