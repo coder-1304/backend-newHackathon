@@ -15,9 +15,20 @@ const projectSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
+    banner: {
+        type: String,
+    },
+    owner: {
+        type: String,
+        require: true,
+    },
     membersId: {
         type: Array,
         default: []
+    },
+    banner: {
+        type: String,
+        require: false
     },
     deadline: {
         type: String,
@@ -26,6 +37,10 @@ const projectSchema = new mongoose.Schema({
     status: {
         type: String,
         default: "toDo",
+    },
+    tasksId: {
+        type: Array,
+        default: [],
     },
     options: {
         type: Array,

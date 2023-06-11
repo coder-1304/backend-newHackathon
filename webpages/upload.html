@@ -33,7 +33,9 @@
                     .then(response => response.json())
                     .then(data => {
                         // Handle the response from the backend
-                        console.log(data);
+                        // console.log(data);
+                        // window.location.href = `/taskDetailsPage/${id}`;
+                        location.reload();
                     })
                     .catch(error => {
                         // Handle any errors that occur during the request

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Kanban Board</title>
+  <style>
+    .board {
+      display: flex;
+      justify-content: center;
+    }
+
+    .column {
+      flex: 1;
+      margin: 10px;
+      padding: 10px;
+      /* background-color: #4b3838; */
+      background-color: #bdb4b4;
+      border-radius: 10px;
+      width: 250px;
+      min-height: 400px;
+    }
+
+    .column h2 {
+      text-align: center;
+    }
+
+    .card {
+      margin: 10px 0;
+      padding: 5px;
+      background-color: #ffffff;
+      border: 1px solid #000000;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .hidden {
+      visibility: hidden;
+    }
+
+    #todo-column {
+      background-color: #ddd7d7;
+      border: 2px solid rgb(193, 0, 0);
+    }
+    /**/
+  #add-task-form {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#task-input {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid #000000;
+  border-radius: 5px 0 0 5px;
+  margin-right: 10px;
+}
+
+#task-input::placeholder {
+  color: #999999;
+}
+
+#add-task-button {
+  padding: 50px 10px;
+  background-color: #4b3838;
+  color: #ffffff;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer
+}
+
+#add-task-button:hover {
+  background-color: #593c3c;
+}
+
+
+
+
+    /**/
+
+
+    #in-progress-column {
+      background-color: #ddd7d7;
+      border: 2px solid rgb(255, 242, 0);
+    }
+
+    #review-column {
+      background-color: #ddd7d7;
+      border: 2px solid rgb(0, 115, 255)
+    }
+
+    #done-column {
+      background-color: #ddd7d7;
+      border: 2px solid rgb(47, 143, 45);
+    }
+
+    body {
+      font-family: 'Your Font', sans-serif;
+    }
+
+    .section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+    }
+
+    .header{
+      width: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px;
+      padding: 7px;
+      height: 30px;
+      border-radius: 30px;
+    }
+    #header1{
+      background-color:  rgb(193, 0, 0);
+
+    }
+    #header2{
+      background-color:  rgb(255, 242, 0);
+    }
+    #header3{
+      background-color:  rgb(0, 115, 255);
+    }
+    #header4{
+      background-color:  rgb(47, 143, 45);
+    }
+    .white-text{
+      color: #ffffff;
+    }
+
+    /* .task{
+            background-color: #2e2e2e;
+            cursor: pointer;
+            color: antiquewhite;
+            border: 1px solid black;
+        } */
+  </style>
+</head>
+
+<body>
+  <div class="board">
+    <!-- To do -->
+    <div class="section">
+      <div class="header white-text"id="header1" >
+        <h2>To Do</h2>
+      </div>
+      <div class="column" id="todo-column">
+        <div id="todo-tasks"></div>
+        <form id="add-task-form">
+          <input type="text" id="task-input" placeholder="Enter a task">
+          <button type="submit">Add Task</button>
+        </form>
+      </div>
+    </div>
+    <!-- In progress -->
+    <div class="section">
+      <div class="header white-text" id="header2">
+
+        <h2>In Progress</h2>
+      </div>
+      <div class="column" id="in-progress-column">
+        <div id="in-progress-tasks"></div>
+      </div>
+    </div>
+    <!-- Review -->
+    <div class="section">
+      <div class="header white-text" id="header3">
+
+        <h2>Review</h2>
+      </div>
+      <div class="column" id="review-column">
+        <div id="review-tasks"></div>
+      </div>
+    </div>
+    <!-- Done -->
+    <div class="section">
+      <div class="header white-text" id="header4">
+
+        <h2>Done</h2>
+      </div>
+      <div class="column" id="done-column">
+        <div id="done-tasks"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- <div class="task">
+        <div class="id hidden"></div>
+        <div class="content card">
+            <div class="task">Task 1</div>
+        </div>
+    </div> -->
+  <!-- <script src="./universal.js"></script> -->
+  <script>
+    // Data fetched from the backend
+    const d = [
+      // { task: 'task1', headline: 'toDo', id: "abc1" },
+      // { task: 'task2', headline: 'inProgress', id: "abc2" },
+      // { task: 'task3', headline: 'review', id: "ab3" },
+      // { task: 'task4', headline: 'done', id: "abc4" },
+      // { task: 'task5', headline: 'review', id: "abc5" },
+    ];
+
+    // Function to align the tasks to their respective columns
+    function alignTasks() {
+      const todoTasksContainer = document.getElementById("todo-tasks");
+      const inProgressTasksContainer = document.getElementById("in-progress-tasks");
+      const reviewTasksContainer = document.getElementById("review-tasks");
+      const doneTasksContainer = document.getElementById("done-tasks");
+
+      // Clear existing tasks from containers
+      todoTasksContainer.innerHTML = '';
+      inProgressTasksContainer.innerHTML = '';
+      reviewTasksContainer.innerHTML = '';
+      doneTasksContainer.innerHTML = '';
+
+
+      // Fetching tasks:
+      fetch('/fetchProjectTasks')
+        .then(response => response.json())
+        .then(async (response) => {
+          console.log(response);
+          response.forEach(item => {
+            const taskName = item.name;
+            const headline = item.status;
+            const card = document.createElement("div");
+            const element = `
+                <div class="task">
+                  <div class="id hidden">${item._id}</div>
+                  <div class="content card" onclick="goToTask(this.parentNode)">
+                    <div class="task">${taskName}</div>
+                  </div>
+               </div>
+                
+                `
+            card.innerHTML += element;
+            // card.className = "card";
+            // card.textContent = taskName;
+
+            switch (headline) {
+              case 'toDo':
+                todoTasksContainer.appendChild(card);
+                break;
+              case 'inProgress':
+                inProgressTasksContainer.appendChild(card);
+                break;
+              case 'review':
+                reviewTasksContainer.appendChild(card);
+                break;
+              case 'done':
+                doneTasksContainer.appendChild(card);
+                break;
+              default:
+                break;
+            }
+          });
+        })
+        .catch(error => {
+          // Handle any errors that occur during the request
+          console.error('Error:', error);
+        });
+    }
+
+    // Add a new task to the To Do column
+    function addTask(event) {
+      event.preventDefault();
+      const taskInput = document.getElementById("task-input");
+      const taskName = taskInput.value.trim();
+      if (taskName === '') return;
+
+      const todoTasksContainer = document.getElementById("todo-tasks");
+      const card = document.createElement("div");
+      card.className = "card";
+      card.textContent = taskName;
+      todoTasksContainer.appendChild(card);
+
+      taskInput.value = '';
+      // sending data to backend
+      const url = '/addTask'; // Replace with your API endpoint URL
+
+      const data = {
+        name: taskName
+      };
+
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+        .then(response => response.json())
+        .then(result => {
+          console.log('POST request successful:', result);
+          location.reload();
+          // Process the response data
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          // Handle the error
+        });
+      //ends fetch function
+    }
+
+    async function goToTask(node) {
+      const id = await node.querySelector(".id").textContent;
+      console.log(id);
+      await fetch(`/saveCookies/${id}`);
+      window.location.href = `/taskDetailsPage`
+    }
+
+    // Call the function to align tasks on page load
+    alignTasks();
+
+    // Add event listener to the form
+    const addTaskForm = document.getElementById("add-task-form");
+    addTaskForm.addEventListener("submit", addTask);
+
+
+  </script>
+</body>
+
+</html>

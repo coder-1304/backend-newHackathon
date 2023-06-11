@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Description</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      max-width: 800px;
+    }
+
+    .card {
+      margin-bottom: 20px;
+    }
+
+    .text-center {
+      text-align: center;
+
+      #task-banner-preview {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .task-card {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+
+      .attachments-preview {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .attachments-preview img {
+        max-width: 100px;
+        height: auto;
+      }
+
+      .edit-button {
+        background-color: #337ab7;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+    }
+
+    /* Discussion Section */
+    body {
+      font-family: 'Your Font', sans-serif;
+      /* background-image: url('https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510_1280.jpg'); */
+    }
+
+    .comment-section {
+      width: 60%;
+      margin: 0 auto;
+      /* background-color: grey; */
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    #comments {
+      margin-bottom: 20px;
+    }
+
+    .comment {
+      margin-bottom: 10px;
+      padding: 10px;
+      /* background-color: #f5f5f5; */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+      border-radius: 20px;
+    }
+
+    .comment p {
+      margin: 0;
+    }
+
+    .comment .name {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .comment .file-link {
+      margin-top: 5px;
+    }
+
+    #comment-form {
+      margin-top: 20px;
+    }
+
+    #comment-form input,
+    #comment-form textarea,
+    #comment-form button {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    #comment-form textarea {
+      height: 80px;
+      width: 100%;
+      resize: none;
+    }
+
+    #comment-form button {
+      background-color: #4CAF50;
+      border-radius: 10px;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    #poster {
+      max-height: 300px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container py-4">
+    <h2 class="text-center">Task Description</h2>
+    <div class="card">
+      <img id="taskBanner" src="" alt="">
+      <div class="card-body ml-3">
+        <div class="row mt-4 ">
+          <div class="col">
+            <button id="edit-button" class="btn btn-primary">Edit Description</button>
+            <button id="save-button" class="btn btn-success" style="display: none;">Save Description</button>
+          </div>
+        </div>
+        <h2 id="task-name" class="card-title mt-10">Task Name</h2>
+        <p id="task-description" class="card-text">Task Description</p>
+        <!-- <img id="task-banner-preview" src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Task Banner Preview" class="img-fluid mt-2"> -->
+        <!-- <label for="task-banner-input">
+          <img class="avatar-preview" src="https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png"
+              alt="Avatar Preview">
+      </label> -->
+        <p id="assigned-person" class="card-text">Project Owner: Shannee Ahirwar</p>
+      </div>
+
+    </div>
+  </div>
+  <div id="task-modal" class="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Task Description</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="task-form" action="/updateTaskDetails" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="task-name-input" class="form-label">Task Name</label>
+              <input type="text" class="form-control" name="name" id="task-name-input" required>
+            </div>
+            <div class="mb-3">
+              <label for="task-description-input" class="form-label">Task Description</label>
+              <textarea name="description" class="form-control" id="task-description-input" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="task-banner-input" class="form-label">Task Banner</label>
+              <input name="file" type="file" class="form-control task-banner-input" id="task-banner-input" accept="image/*">
+            </div>
+            <!-- <div class="mb-3">
+              <label for="assigned-person-input" class="form-label">Assigned Person</label>
+              <input type="text" class="form-control" id="assigned-person-input">
+            </div> -->
+            <!-- <div class="mb-3">
+              <label for="attachments-input" class="form-label">Attachments</label>
+              <input type="file" class="form-control" id="attachments-input" accept="image/*, .pdf, .doc, .xls, .ppt"
+                multiple>
+              <div id="attachments-preview" class="mt-2"></div>
+            </div> -->
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button onclick="updateTaskDetails()" id="modal-save-button" type="button" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="comment-section">
+    <h2 id="discussion-title">Discussion (4)</h2>
+    <div id="comments"></div>
+    <form id="comment-form">
+      <!-- <input type="text" id="name-input" placeholder="Your Name" required> -->
+      <textarea id="comment-input" placeholder="Your Comment" required></textarea>
+      <input type="file" id="file-input">
+      <button onclick="postComment()" id="addCommentButton" type="submit">Add Comment</button>
+    </form>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script src="./comment.js"></script>
+  <script src="./script.js"></script>
+</body>
+
+</html>

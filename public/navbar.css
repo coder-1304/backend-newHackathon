@@ -1,0 +1,28 @@
+.navbar{
+    background-color: rgb(207, 207, 207);
+}
+
+.navbar-items a {
+    color: #333;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.navbar-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-buttons a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.active{
+    font-weight: bold;
+}

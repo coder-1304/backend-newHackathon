@@ -1,0 +1,206 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+    /* background-image: url('https://www.hp.com/us-en/shop/app/assets/images/uploads/prod/How%20to%20Choose%20the%20Best%20Project%20Management%20Software1643648253991190.jpg'); */
+
+
+}
+
+.navbar {
+    background-color: #fff;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: larger;
+}
+
+.navbar-items {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-items a {
+    color: #333;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.navbar-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-buttons a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.navbar-buttons a:hover {
+    background-color: #45a049;
+}
+
+.container {
+    max-width: 100%;
+    height: 150pt;
+    margin: 0 auto;
+    padding: 40px;
+    /* background-color: #fff; */
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 0;
+    margin-left: 0px;
+    /* background-image:url('https://www.herzing.edu/sites/default/files/styles/fp_960_480_jpg/public/2020-09/project-management-skills.jpg?h=b3660f0d&itok=n3ZvqxMB'); */
+    /* background-image: url('https://scontent.fnag6-2.fna.fbcdn.net/v/t39.30808-6/311694634_488625606627236_3182934885100692673_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=e3f864&_nc_ohc=xesL-aAZG38AX-lSQOK&_nc_ht=scontent.fnag6-2.fna&oh=00_AfDkKASBtqeK3KVBFut9CcZB6yNU_dlyPyB0gItS7visyA&oe=648B3149'); */
+    background-image: url('https://www.hp.com/us-en/shop/app/assets/images/uploads/prod/How%20to%20Choose%20the%20Best%20Project%20Management%20Software1643648253991190.jpg');
+    object-fit: cover;
+    background-repeat: no-repeat;
+    color: black;
+    text-align: center;
+}
+
+.container p {
+    color: #fff;
+    font-size: medium;
+}
+
+.feature-cards {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    background-color: white;
+    margin-left: 20px;
+}
+
+.feature-card {
+    width: 23%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 3px 5px rgba(27, 25, 25, 0.1);
+    margin-right: 20px;
+}
+
+.feature-card h3 {
+    color: #333;
+    margin-top: 0;
+    /* height: ; */
+}
+
+.feature-card p {
+    color: #777;
+}
+
+.feature-section h1 {
+    border: 1px solid black;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.featuresHeading {
+    background-color: white;
+}
+
+body {
+    background-color: white;
+}
+
+.team {
+    margin-top: 70px;
+    width: 100%;
+    height: 500px;
+    /* background-color: rgb(220, 187, 212); */
+    margin-bottom: 70px;
+    background: linear-gradient(135deg, #cccccc, #666666);
+    background-size: cover;
+}
+
+.team-cards {
+    display: flex;
+    justify-content: space-between;
+    /* margin-top: 40px;
+margin-left: 50px; */
+}
+
+.team-card {
+    width: 23%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 60px;
+}
+
+.team-card img {
+    width: 60%;
+    border-radius: 0%;
+    margin: 10px;
+    height: 60%;
+}
+
+.team-card h3 {
+    color: #333;
+    margin-top: 0;
+}
+
+.team-card p {
+    color: #777;
+    margin-bottom: 0;
+}
+
+.team-card .role {
+    color: #999;
+}
+
+.teamHeading {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: cover;
+}
+
+.active {
+    font-weight: bold;
+}

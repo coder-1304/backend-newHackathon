@@ -4,6 +4,7 @@ const Project = require('../../database/models/projectSchema');
 const projectController = {
     async addProject(req, res) {
         try {
+            console.log('Adding New Project')
             const title = req.body.title;
             const description = req.body.description;
             const ownerId = req.user._id;
@@ -17,12 +18,15 @@ const projectController = {
                 description: description,
                 deadline: deadline,
                 status: 'To Do',
+                owner: `${req.user.fName} ${req.user.lName}`
             })
+            console.log(project);
             project.save();
-            res.json({
-                result: 'Success'
-            })
-            res.end();
+            // res.json({
+            //     result: 'Success'
+            // })
+            // res.end();
+            res.redirect('http://localhost:5000/dashboard');
         } catch (error) {
             res.send(error);
         }

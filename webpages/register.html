@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    .container {
+      max-width: 400px;
+      padding:30px;
+      margin: 50px auto;
+      border-top: 10px solid #4CAF50;
+      border-radius: 5px;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Registration</h2>
+    <form action="/register" method="post">
+      <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input type="text" class="form-control" id="firstName" name="fName" required>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input type="text" class="form-control" id="lastName" name="lName" required>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Phone No.:</label>
+        <input type="text" class="form-control" id="lastName" name="phone" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+      </div>
+      <button type="submit" class="btn btn-primary" style="background-color:#4CAF50">Register</button>
+      <br/>
+      <br/>
+      <p>Already have an account ?</p><a href="/loginPage">Login</a>
+    </form>
+  </div>
+</body>
+</html>

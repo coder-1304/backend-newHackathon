@@ -31,6 +31,14 @@ const userSchema = new mongoose.Schema({
         type: Array,
         default: [],
     },
+    connections: {
+        type: Array,
+        default: [],
+    },
+    connectionReq: {
+        type: Array,
+        default: [],
+    },
     tokens: [{
         token:{
             type: String,

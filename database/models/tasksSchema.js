@@ -7,38 +7,37 @@ const taskSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
+    projectId: {
+        type: String,
+        require: true,
+    },
+    ownerName: {
+        type: String,
+        require: true,
+    },
     description: {
         type: String,
-        require: true,
+        default: ""
     },
-    ownerId: {
+    banner: {
         type: String,
-        require: true,
+        default: "",
     },
     membersId: {
-        type: String,
-        require: true,
-    },
-    deadline: {
-        type: String,
-        require: true,
-    },
-    ownedProjects: {
         type: Array,
-        default: [],
+        default: []
     },
-    memberOfProjects: {
-        type: Array,
-        default: [],
-    },
+    // deadline: {
+    //     type: String,
+    //     require: true,
+    // },
     status: {
         type: String,
         default: "toDo",
     },
-    options: {
+    discussion:{
         type: Array,
-        default: [],
-    },
+    }
 })
 
 const Task = new mongoose.model('Task',taskSchema);

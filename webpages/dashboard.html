@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+    }
+
+    .card {
+      margin-bottom: 20px;
+    }
+
+    .flexCenter {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #addProjectButton {
+      margin-top: 12px;
+      margin-bottom: 20px;
+    }
+
+    .hidden {
+      visibility: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="navbar-items">
+      <span class="navbar-brand">ProSquadron</span>
+      <a class="active" href="/dashboard">Dashboard</a>
+      <a href="/connections">Connection</a>
+    </div>
+  </nav>
+  <div class="container">
+    <h2>Dashboard</h2>
+    <div class="card-container" id="mainCardsContainer"></div>
+    <!-- Project Card 1 -->
+    <!-- <div class="card">
+      <img class="card-img-top" src="project1-banner.jpg" alt="Project 1 Banner">
+      <div class="card-body">
+        <h5 class="card-title">Project 1</h5>
+        <p class="card-text">Owner: John Doe</p>
+        <p class="card-text">Created: January 1, 2023</p>
+        <p class="card-text">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p class="card-text">Deadline: March 1, 2023</p>
+        <p class="card-text">Status: 5 tasks accomplished</p>
+        <a href="#" class="btn btn-primary">View More</a>
+      </div>
+    </div> -->
+
+    <!-- Add Project Button -->
+
+  </div>
+  <div id="addProjectButton" class="flexCenter">
+    <a href="http://localhost:5000/addProjectPage" class="btn btn-success">Add Project</a>
+  </div>
+  <script src="./dashboard.js"></script>
+  <link rel="stylesheet" href="./navbar.css">
+
+</html>
+</body>
+
+</html>

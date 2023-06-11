@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Person's Chat Card</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f1f1f1;
+            font-family: Arial, sans-serif;
+        }
+
+        .card {
+            width: 300px;
+            height: 25px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-header {
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .card-body {
+            font-size: 14px;
+            color: #777;
+        }
+
+        .button {
+            padding: 10px 3px;
+            background-color: #4CAF50;
+            /* background-color: #82c184; */
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="card-content">
+            <div class="card-header">John Doe</div>
+            <div class="card-body">johndoe@example.com</div>
+        </div>
+        <!-- <a href="" id="addConnectionButton" onclick="addConnection()" class="button">Add Connection</a> -->
+        <div id="addConnectionButton" onclick="addConnection()" class="button">Add Connection</div>
+    </div>
+</body>
+
+<script>
+    function addConnection() {
+        console.log('processing')
+        const button = document.getElementById('addConnectionButton');
+        button.innerHTML = 'Request Sent'
+        button.style.backgroundColor = '#82c184';
+    }
+</script>
+
+</html>
